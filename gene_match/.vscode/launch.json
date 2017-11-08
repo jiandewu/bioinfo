@@ -1,0 +1,25 @@
+{
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "(gdb) Launch",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceRoot}/gene_match",
+                "args": ["father_v_proband.diff.sites_in_files"],
+                "stopAtEntry": false,
+                "cwd": "/media/jwu/data2/Ayesha Project/family2",
+                "environment": [],
+                "externalConsole": true,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ],
+                "preLaunchTask": "build gene_match"
+            }
+        ]
+    }

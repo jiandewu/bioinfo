@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "sstream": "cpp",
+        "functional": "cpp",
+        "type_traits": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp"
+    }
+}
