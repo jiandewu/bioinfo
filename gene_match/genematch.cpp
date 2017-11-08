@@ -63,6 +63,15 @@ int main(int argc, const char * argv[])
                    output += ((*low)[4] + '\t' + line + '\n');
                 }
             }
+
+            // // may faster methord
+            // vector<size_t> vecinx(up - p.first);
+            // iota(vecinx.begin(), vecinx.end(), p.first - refgene.begin());
+            // sort(vecinx.begin(), vecinx.end(), [&refgene](size_t i1, size_t i2) {return stoi(refgene[i1][3]) < stoi(refgene[i2][3]);});
+            // auto upp = upper_bound(vecinx.begin(), vecinx.end(), tokens[1], [&refgene](string i2, size_t i1) {return stoi(i2) < stoi(refgene[i1][3]);});
+            // for (auto low = upp; low != vecinx.end(); ++low) {
+            //     output += (refgene[*low][4] + '\t' + line + '\n');
+            // }
         }
     }
 
