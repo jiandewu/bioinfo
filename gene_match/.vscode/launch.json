@@ -5,7 +5,7 @@
                 "name": "(gdb) Launch",
                 "type": "cppdbg",
                 "request": "launch",
-                "program": "${workspaceRoot}/gene_match",
+                "program": "${workspaceRoot}/gene_match.out",
                 "args": ["father_v_proband.diff.sites_in_files"],
                 "stopAtEntry": false,
                 "cwd": "/media/jwu/data2/Ayesha Project/family2",

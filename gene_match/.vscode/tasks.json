@@ -8,7 +8,7 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g -std=c++11 -o gene_match", "genematch.cpp"
+                "-g -std=c++11 -o gene_match.out", "genematch.cpp"
             ],
             "group": {
                 "kind": "build",
