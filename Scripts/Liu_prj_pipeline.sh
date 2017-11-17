@@ -1,26 +1,27 @@
 #!/bin/bash
 
-PRJDIR=/media/jwu/data2/Ayesha_Project
+# please no space in the directory path
+PRJDIR=/media/jwu/data3/Liu_project
 GE_REF=/media/jwu/data2/Ayesha_Project/hg38ref/hg38.fa
 GATK=/home/jwu/Tools/GenomeAnalysisTK-3.8-0-ge9d806836/GenomeAnalysisTK.jar
 PICARD=/home/jwu/bin/picard.jar
 SNPEFF=/home/jwu//bin/snpEff/snpEff.jar
 RESULT=pipe
 
-# find ${PRJDIR} -name "*.fastq.gz" -printf "%h\n" | uniq | parallel mkdir -p {}/${RESULT}
+# find ${PRJDIR} -name "*.clean.fq.gz" -printf "%h\n" | uniq | parallel mkdir -p {}/${RESULT}
 
-# echo "step 1.  time: $(date)" > ${PRJDIR}/${RESULT}.log
-# # /media/jwu/data3/Liu_project/F13TSFUSAT0104_HUMjxxX/result/1-N/clean_data/131129_I649_FCC332NACXX_L1_RHUMjxxXAAAAAAA-16_1.clean.fq.gz
-# # @RG\tID:flowcell.sample.lane\tLB:flowcell.sample\tPL:ILLUMINA\tPM:HISEQ\tSM:sample\tPU:flowcell.lane.sample
-# find ${PRJDIR} -name "*.fastq.gz" -printf "%h/_%f\n" | grep -v _R2_ | \
-# parallel --colsep '_' "bwa mem -M -R '@RG\tID:{7}.{8}.{10}\tLB:{7}.{8}\tPL:ILLUMINA\tPM:HISEQ\tSM:{8}\tPU:{7}.{10}.{8}' ${GE_REF} {1}_{2}_{3}_{4}_{5}_{6}{7}_{8}_{9}_{10}_R1_{12} {1}_{2}_{3}_{4}_{5}_{6}{7}_{8}_{9}_{10}_R2_{12} > {1}_{2}_{3}_{4}_{5}_{6}${RESULT}/{7}_{8}_{9}_{10}_{12}.sam"
+echo "step 1.  time: $(date)" > ${PRJDIR}/${RESULT}.log
+# /media/jwu/data3/Liu_project/F13TSFUSAT0104_HUMjxxX/result/1-N/clean_data/131129_I649_FCC332NACXX_L1_RHUMjxxXAAAAAAA-16_1.clean.fq.gz
+# @RG\tID:flowcell.sample.lane\tLB:flowcell.sample\tPL:ILLUMINA\tPM:HISEQ\tSM:sample\tPU:flowcell.lane.sample
+find ${PRJDIR} -name "*.clean.fq.gz" | grep -v _2.clean.fq.gz | \
+parallel --colsep '_' "bwa mem -M -R '@RG\tID:{6}.{8}.{7}\tLB:{6}.{8}\tPL:ILLUMINA\tPM:HISEQ\tSM:{8}\tPU:{6}.{7}.{8}' ${GE_REF} {1}_{2}_{3}_{4}_{5}_{6}_{7}_{8}_1.clean.fq.gz {1}_{2}_{3}_{4}_{5}_{6}_{7}_{8}_2.clean.fq.gz > {1}_{2}_{3}_{4}_{5}_{6}_{7}_{8}.clean.fq.gz.sam"
 
 echo "step 2.  time: $(date)" >> ${PRJDIR}/${RESULT}.log
-find ${PRJDIR} -name "*.fastq.gz.sam" | parallel "java -jar ${PICARD} SortSam INPUT={} OUTPUT={.}.bam SORT_ORDER=coordinate"
-find ${PRJDIR} -type f -name "*.fastq.gz.sam" -exec rm -f {} \;
+find ${PRJDIR} -name "*.clean.fq.gz.sam" | parallel "java -jar ${PICARD} SortSam INPUT={} OUTPUT={.}.bam SORT_ORDER=coordinate"
+find ${PRJDIR} -type f -name "*.clean.fq.gz.sam" -exec rm -f {} \;
 
-find ${PRJDIR} -name "*.fastq.gz.bam" -printf "%h\n" | uniq | parallel "samtools merge {}/sorted.bam {}/*.bam"
-find ${PRJDIR} -type f -name "*.fastq.gz.bam" -exec rm -f {} \;
+find ${PRJDIR} -name "*.clean.fq.gz.bam" -printf "%h\n" | uniq | parallel "samtools merge {}/sorted.bam {}/*.bam"
+find ${PRJDIR} -type f -name "*.clean.fq.gz.bam" -exec rm -f {} \;
 
 echo "step 3.  time: $(date)" >> ${PRJDIR}/${RESULT}.log
 find ${PRJDIR} -name "sorted.bam" | parallel "java -jar ${PICARD} CollectAlignmentSummaryMetrics R=${GE_REF} I={} O={//}/alignment_metrics.txt"
