@@ -6,9 +6,9 @@
                 "type": "cppdbg",
                 "request": "launch",
                 "program": "${workspaceRoot}/gene_match.out",
-                "args": ["father_v_proband.diff.sites_in_files"],
-                "stopAtEntry": false,
-                "cwd": "/media/jwu/data2/Ayesha Project/family2",
+                "args": ["father_proband.diff.sites_in_files"],
+                "stopAtEntry": true,
+                "cwd": "/media/jwu/data2/Ayesha_Project/family1",
                 "environment": [],
                 "externalConsole": true,
                 "MIMode": "gdb",
@@ -19,7 +19,7 @@
                         "ignoreFailures": true
                     }
                 ],
-                "preLaunchTask": "build gene_match"
+                "preLaunchTask": "build_gene_match"
             }
         ]
     }
