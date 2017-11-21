@@ -1,4 +1,5 @@
 #!/bin/bash
+# ref: https://gencore.bio.nyu.edu/variant-calling-pipeline/
 
 # no space in the directory path
 PRJDIR=/media/jwu/data2/Ayesha_Project
