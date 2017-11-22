@@ -8,7 +8,7 @@ echo "step 2.  time: $(date)" >> ${PRJDIR}/${RESULT}.log
 find ${PRJDIR} -name "*.script.sam" | grep /${RESULT}/ | parallel "java -jar ${PICARD} SortSam INPUT={} OUTPUT={.}.bam SORT_ORDER=coordinate"
 # find ${PRJDIR} -type f -name "*.script.sam" -exec rm -f {} \;
 
-find ${PRJDIR} -name "*.script.bam" -printf "%h\n" | uniq | grep /${RESULT}/ | parallel "samtools merge {}/sorted.bam {}/*.script.bam"
+find ${PRJDIR} -name "*.script.bam" -printf "%h\n" | uniq | grep /${RESULT} | parallel "samtools merge {}/sorted.bam {}/*.script.bam"
 # find ${PRJDIR} -type f -name "*.script.bam" -exec rm -f {} \;
 
 echo "step 3.  time: $(date)" >> ${PRJDIR}/${RESULT}.log
