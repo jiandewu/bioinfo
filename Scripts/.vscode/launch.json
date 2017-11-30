@@ -8,7 +8,7 @@
             "name": "Bash-Debug",
             "type": "bashdb",
             "request": "launch",
-            "scriptPath": "${workspaceRoot}/ayesha_prj_pipeline.sh",
+            "scriptPath": "${workspaceRoot}/Liu_prj_pipeline.sh",
             "commandLineArguments": "",
             "linux": {
                 "bashPath": "bash"

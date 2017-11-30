@@ -28,7 +28,7 @@ ASSUME_SORTED=true VALIDATION_STRINGENCY=LENIENT
 
 samtools index ejmt.sorted.redup.bam
 ## vaiant calling
-samtools  mpileup -DSug -C 50 -Q 20 -q 40 -f ${GE_REF} ejmt.sorted.redup.bam | bcftools view -cvg - > ejmt.vcf
+samtools  mpileup -DSug -C 50 -Q 20 -q 40 -f ${GE_REF} ejmt.sorted.redup.bam | bcftools view -Ov -g^miss -o ejmt.vcf
 
 
 
@@ -45,7 +45,7 @@ ASSUME_SORTED=true VALIDATION_STRINGENCY=LENIENT
 
 samtools index jmt.sorted.redup.bam
 ## vaiant calling
-samtools  mpileup -DSug -C 50 -Q 20 -q 40 -f ${GE_REF} jmt.sorted.redup.bam | bcftools view -cvg - > jmt.vcf
+samtools  mpileup -DSug -C 50 -Q 20 -q 40 -f ${GE_REF} jmt.sorted.redup.bam | bcftools view -Ov -g^miss -o jmt.vcf
 
 
 
@@ -62,4 +62,4 @@ ASSUME_SORTED=true VALIDATION_STRINGENCY=LENIENT
 
 samtools index wt.sorted.redup.bam
 ## vaiant calling
-samtools  mpileup -DSug -C 50 -Q 20 -q 40 -f ${GE_REF} wt.sorted.redup.bam | bcftools view -cvg - > wt.vcf
+samtools  mpileup -DSug -C 50 -Q 20 -q 40 -f ${GE_REF} wt.sorted.redup.bam | bcftools view -Ov -g^miss -o wt.vcf
