@@ -5,6 +5,7 @@
 PRJDIR=/media/jwu/data3/Liu_project
 GE_REF=/media/jwu/data2/RefGene/hg38ref/hg38.fa
 RESULT=pipe
+LOGFILE=${PRJDIR}/${RESULT}.log
 STARTSTEP=0
 
 case $STARTSTEP in
@@ -12,7 +13,7 @@ case $STARTSTEP in
 	find ${PRJDIR} -name "*.clean.fq.gz" -printf "%h\n" | uniq | parallel mkdir -p {}/${RESULT}
 	;&
 [0-1])
-	echo "step 1.  time: $(date)" >${PRJDIR}/${RESULT}.log
+	echo "step 1.  time: $(date)" >${LOGFILE}
 	# /media/jwu/data3/Liu_project/F13TSFUSAT0104_HUMjxxX/result/1-N/clean_data/_131129_I649_FCC332NACXX_L1_RHUMjxxXAAAAAAA-16_1.clean.fq.gz
 	# @RG\tID:flowcell.sample.lane\tLB:RHUMjxxXAAAAAAA-16\tPL:ILLUMINA\tPM:HISEQ\tSM:sample\tPU:flowcell.lane.sample
 	find ${PRJDIR} -name "*.clean.fq.gz" -printf "%h/_%f\n" | grep -v _2.clean.fq.gz |

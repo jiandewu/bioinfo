@@ -55,9 +55,9 @@ int main(int argc, const char *argv[])
         istringstream iss(line);
         vector<string> tokens;
         copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(tokens));
-        // Chromosome name format: chr1
+        // For chromosome name format: chr1
         Gene_ref gene(tokens[0], "chr" + tokens[1], stoi(tokens[2]), stoi(tokens[3]), tokens[4]);
-        // Chromosome name format: 1
+        // For chromosome name format: 1
         // Gene_ref gene(tokens[0], tokens[1], stoi(tokens[2]), stoi(tokens[3]), tokens[4]);
         vec_gene.push_back(gene);
     }

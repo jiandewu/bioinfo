@@ -5,6 +5,7 @@
 PRJDIR=/media/jwu/data2/Ayesha_Project
 GE_REF=/media/jwu/data2/RefGene/hg38ref/hg38.fa
 RESULT=pipe
+LOGFILE=${PRJDIR}/${RESULT}.log
 STARTSTEP=0
 
 case $STARTSTEP in
@@ -12,7 +13,7 @@ case $STARTSTEP in
 	find ${PRJDIR} -name "*.fastq.gz" -printf "%h\n" | uniq | parallel mkdir -p {}/${RESULT}
 	;&
 [0-1])
-	echo "step 1.  time: $(date)" >${PRJDIR}/${RESULT}.log
+	echo "step 1.  time: $(date)" >${LOGFILE}
 	# /media/jwu/data2/Ayesha_Project/family2/101401_DVDS_v1.4.7.4_ACE3_mother/FASTQ/HLWTJADXX_101401_TAGGATGA_L002_R1_001.fastq.gz
 	# @RG\tID:flowcell.sample.lane\tLB:flowcell.sample\tPL:ILLUMINA\tPM:HISEQ\tSM:sample\tPU:flowcell.lane.sample
 	find ${PRJDIR} -name "*.fastq.gz" -printf "%h/_%f\n" | grep -v _R2_ |

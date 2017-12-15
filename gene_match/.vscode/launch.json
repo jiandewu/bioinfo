@@ -1,21 +1,41 @@
 {
-        "version": "0.2.0",
+        "version"       : "0.2.0",
         "configurations": [
-            {
-                "name": "(gdb) Launch",
-                "type": "cppdbg",
-                "request": "launch",
-                "program": "${workspaceRoot}/gene_match.out",
-                "args": ["father_proband.diff.sites_in_files"],
-                "stopAtEntry": true,
-                "cwd": "/media/jwu/data2/Ayesha_Project/family1",
-                "environment": [],
+            { 
+                "name"           : "(gdb) RNA-Seq-Clin",
+                "type"           : "cppdbg",
+                "request"        : "launch",
+                "program"        : "${workspaceRoot}/RNA-Seq-Clin.out",
+                "args"           : ["father_proband.diff.sites_in_files"],
+                "stopAtEntry"    : true,
+                "cwd"            : "/media/jwu/data2/BreastTumor",
+                "environment"    : [],
                 "externalConsole": true,
-                "MIMode": "gdb",
-                "setupCommands": [
+                "MIMode"         : "gdb",
+                "setupCommands"  : [
                     {
-                        "description": "Enable pretty-printing for gdb",
-                        "text": "-enable-pretty-printing",
+                        "description"   : "Enable pretty-printing for gdb",
+                        "text"          : "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ],
+                "preLaunchTask": "build_RNASeqClin"
+            },
+            {
+                "name"           : "(gdb) Launch",
+                "type"           : "cppdbg",
+                "request"        : "launch",
+                "program"        : "${workspaceRoot}/gene_match.out",
+                "args"           : ["father_proband.diff.sites_in_files"],
+                "stopAtEntry"    : true,
+                "cwd"            : "/media/jwu/data2/Ayesha_Project/family1",
+                "environment"    : [],
+                "externalConsole": true,
+                "MIMode"         : "gdb",
+                "setupCommands"  : [
+                    {
+                        "description"   : "Enable pretty-printing for gdb",
+                        "text"          : "-enable-pretty-printing",
                         "ignoreFailures": true
                     }
                 ],
