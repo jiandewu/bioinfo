@@ -70,7 +70,7 @@ int main(int argc, const char *argv[])
         }
     }
 
-    ifstream normalfile("./normal-list.txt");
+    ifstream normalfile("./normal-file-list.txt");
     vector<string> normal_list;
     while (getline(normalfile, line))
     {
@@ -179,10 +179,9 @@ int main(int argc, const char *argv[])
     }
 
     sort(patient_uuids.begin(), patient_uuids.end(), [&](string a, string b) {
-        if (id_clin[a]["normal"] == id_clin[a]["normal"])
+        if (id_clin[a]["normal"] == id_clin[b]["normal"])
             return id_clin[a]["trip_negative"] < id_clin[b]["trip_negative"];
-        return id_clin[a]["normal"] < id_clin[a]["normal"]; });
-    // sort(patient_uuids.begin(), patient_uuids.end(), [&](string a, string b) { return id_clin[a]["trip_negative"] < id_clin[b]["trip_negative"]; });
+        return id_clin[a]["normal"] < id_clin[b]["normal"]; });
 
     for (auto &i : gene_name)
     {
