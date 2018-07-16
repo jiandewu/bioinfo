@@ -5,6 +5,7 @@
         "type_traits": "cpp",
         "array": "cpp",
         "initializer_list": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "iterator": "cpp"
     }
 }

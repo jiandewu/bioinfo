@@ -1,6 +1,12 @@
 {
         "version"       : "0.2.0",
         "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}"
+        },
             { 
                 "name"           : "(gdb) RNA-Seq-Clin",
                 "type"           : "cppdbg",
@@ -8,7 +14,7 @@
                 "program"        : "${workspaceRoot}/RNA-Seq-Clin.out",
                 "args"           : ["father_proband.diff.sites_in_files"],
                 "stopAtEntry"    : true,
-                "cwd"            : "/media/jwu/data2/BreastTumor",
+                "cwd"            : "/media/jwu/data/BreastTumor",
                 "environment"    : [],
                 "externalConsole": true,
                 "MIMode"         : "gdb",
@@ -21,14 +27,34 @@
                 ],
                 "preLaunchTask": "build_RNASeqClin"
             },
+            { 
+                "name"           : "(gdb) Perm-Test",
+                "type"           : "cppdbg",
+                "request"        : "launch",
+                "program"        : "${workspaceRoot}/permtest",
+                "args"           : ["-t 112", "-f ./01clin_trip_clear.txt"],
+                "stopAtEntry"    : true,
+                "cwd"            : "/media/jwu/data/BreastTumor/pomelo_tripnega_TPM",
+                "environment"    : [],
+                "externalConsole": true,
+                "MIMode"         : "gdb",
+                "setupCommands"  : [
+                    {
+                        "description"   : "Enable pretty-printing for gdb",
+                        "text"          : "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ],
+                "preLaunchTask": "build_permtest"
+            },
             {
-                "name"           : "(gdb) Launch",
+                "name"           : "(gdb) Gene-Match",
                 "type"           : "cppdbg",
                 "request"        : "launch",
                 "program"        : "${workspaceRoot}/gene_match",
                 "args"           : ["-cf ../Gene_location.txt","SNP_Somatic_same_mutation.txt"],
                 "stopAtEntry"    : true,
-                "cwd"            : "/media/jwu/data2/BreastTumor/pomelo_tripnega_TPM",
+                "cwd"            : "/media/jwu/data/BreastTumor/pomelo_tripnega_TPM",
                 "environment"    : [],
                 "externalConsole": true,
                 "MIMode"         : "gdb",

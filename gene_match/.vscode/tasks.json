@@ -2,28 +2,43 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
-    "tasks"  : [
+    "tasks": [
         {
-            "label"  : "build_gene_match",
-            "type"   : "shell",
+            "label": "build_gene_match",
+            "type": "shell",
             "command": "g++",
-            "args"   : [
-                "-g -std=c++11 -o gene_match", "genematch.cpp"
+            "args": [
+                "-g -std=c++11 -o gene_match",
+                "genematch.cpp"
             ],
             "group": {
-                "kind"     : "build",
+                "kind": "build",
                 "isDefault": true
             }
         },
         {
-            "label"  : "build_RNASeqClin",
-            "type"   : "shell",
+            "label": "build_permtest",
+            "type": "shell",
             "command": "g++",
-            "args"   : [
-                "-g -std=c++11 -o RNA-Seq-Clin.out", "RNA-Seq-Clin.cpp"
+            "args": [
+                "-g -std=c++17 -o permtest",
+                "Perm-test.cpp"
             ],
             "group": {
-                "kind"     : "build",
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "build_RNASeqClin",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g -std=c++11 -o RNA-Seq-Clin.out",
+                "RNA-Seq-Clin.cpp"
+            ],
+            "group": {
+                "kind": "build",
                 "isDefault": true
             }
         }

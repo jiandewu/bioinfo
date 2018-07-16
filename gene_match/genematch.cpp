@@ -17,13 +17,22 @@ void help(int exitcode)
     cout << "Usage: genematch OPTION... [FILE]...\n";
     cout << "Print matched chromosome position from each FILE with reference gene symble file to standard output.\n";
     cout << "\n  Options:\n";
-    cout << "    -c,\t--chr\t\tchromesome string format like 'chr1'\n";
-    cout << "    -f,\t--refile=FILE\trequired, provide reference gene symble file\n";
+    cout << "    -f,\t--reffile=FILE\trequired, provide reference gene symble file\n";
+    cout << "    \t\t\tgene symble file format (column seprator is TAB):\n";
+    cout << "    \t\t\tGene stable ID\tChromosome\tGene start\tGene end\tGene name\n";
+    cout << "    \t\t\tENSG00000283891\t15\t\t55372940\t55373034\tMIR628\n";
+    cout << "    -c,\t--chr\t\tchromesome string format: 'chr1'\n";
     cout << "    -m,\t--matched\tprint matched to file\n";
     cout << "    -u,\t--unmatched\tprint unmatched to file\n";
     cout << "    \t--help\t\tdisplay this help and exit\n";
     cout << "    \t--version\toutput version information and exit\n";
-    cout << "\nWith no FILE, read standard input.\n\n";
+    cout << "\nWith no FILE, read standard input.\n";
+    cout << "FILE format: first 2 columns should be (column seprator is TAB) chr & position\n";
+    cout << "chr17\t51391264\nOR...\n";
+    cout << "17\t51391264\n\n";
+    cout << "Examples:\n";
+    cout << "gene_match -cmuf Gene_location.txt mutation.txt\n";
+    cout << "gene_match -cf Gene_location.txt mutation.txt > out_matched.txt\n\n";
     cout << "Report bugs to: jwu2@lsuhsc.edu\n";
     cout << "pkg home page: <https://www.medschool.lsuhsc.edu/bioinformatics/>\n";
     cout << "General help using GNU software: <http://www.gnu.org/gethelp/>\n\n";
@@ -214,7 +223,7 @@ int main(int argc, char *argv[])
         switch (c)
         {
         case 1000:
-            cout << "Gene Match 0.3\n";
+            cout << "Gene Match 0.32\n";
             cout << "Copyright (C) 2017 LSUHSC Bioinformatics and Genomics (BIG) Program.\n";
             cout << "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n";
             cout << "This is free software: you are free to change and redistribute it.\n";
@@ -283,7 +292,7 @@ int main(int argc, char *argv[])
     if (inputfiles.empty())
     {
         match(cin, vec_gene, matchedstr, nonmatchedstr);
-        outfile(matchedstr, nonmatchedstr, outmatched_flag, outunmatched_flag, "standard");
+        outfile(matchedstr, nonmatchedstr, outmatched_flag, outunmatched_flag, "gene_match");
     }
     else
     {
