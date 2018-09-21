@@ -5,10 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Bash-Debug",
+            "name": "Ayesha-Debug",
             "type": "bashdb",
             "request": "launch",
-            "scriptPath": "${workspaceRoot}/Liu_prj_pipeline.sh",
+            "scriptPath": "${workspaceRoot}/bioinfo/Scripts/ayesha_prj_pipeline.sh",
+            "commandLineArguments": "",
+            "linux": {
+                "bashPath": "bash"
+            }
+        },
+        {
+            "name": "Liu-Debug",
+            "type": "bashdb",
+            "request": "launch",
+            "scriptPath": "${workspaceRoot}/bioinfo/Scripts/Liu_prj_pipeline.sh",
             "commandLineArguments": "",
             "linux": {
                 "bashPath": "bash"
