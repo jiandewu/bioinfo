@@ -33,7 +33,7 @@ void help(int exitcode)
     cout << "Examples:\n";
     cout << "gene_match -cmuf Gene_location.txt mutation.txt\n";
     cout << "gene_match -cf Gene_location.txt mutation.txt > out_matched.txt\n\n";
-    cout << "Report bugs to: jwu2@lsuhsc.edu\n";
+    cout << "Report bugs at: https://github.com/jiandewu/bioinfo/issues\n";
     cout << "pkg home page: <https://www.medschool.lsuhsc.edu/bioinformatics/>\n";
     cout << "General help using GNU software: <http://www.gnu.org/gethelp/>\n\n";
     exit(exitcode);

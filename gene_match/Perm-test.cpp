@@ -30,7 +30,7 @@ void help(int exitcode)
     cout << "    \t--help\t\tdisplay this help and exit\n";
     cout << "    \t--version\toutput version information and exit\n";
     cout << "\nWith no FILE, read standard input.\n\n";
-    cout << "Report bugs to: jwu2@lsuhsc.edu\n";
+    cout << "Report bugs at: https://github.com/jiandewu/bioinfo/issues\n";
     cout << "pkg home page: <https://www.medschool.lsuhsc.edu/bioinformatics/>\n";
     cout << "General help using GNU software: <http://www.gnu.org/gethelp/>\n\n";
     exit(exitcode);
